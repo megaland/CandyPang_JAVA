@@ -1,4 +1,4 @@
-package com.usnschool;
+package usnschool.com.candypangproject;
 
 public class ServerMain {
 

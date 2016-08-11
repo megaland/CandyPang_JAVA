@@ -1,4 +1,4 @@
-package com.usnschool;
+package usnschool.com.candypangproject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -82,6 +82,30 @@ public class Server {
 
 										break;
 									}
+									case Constants.UPDATE_RECORD : {
+										String id = ois.readUTF();
+										int score = ois.readInt();
+										connector.updateScore(id, score);
+										
+										break;
+									}
+									
+									case Constants.GET_RANKER_AND_ME : {
+										String id = ois.readUTF();
+										
+										int myrank = connector.getMyRank(id);
+										int myscore = connector.getMyScore(id);
+										ArrayList<RankerData> rankerlist = connector.getRankerList();
+										
+										oos.writeInt(myrank);
+										oos.flush();
+										oos.writeInt(myscore);
+										oos.flush();
+										oos.writeObject(rankerlist);
+										oos.flush();
+										System.out.println("기록데이터를 전송했습니다");
+									}
+									
 									
 								}
 							} catch (IOException e) {
