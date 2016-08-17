@@ -12,13 +12,9 @@ import java.util.ArrayList;
 public class Server {
 	ServerSocket server;
 	Socket socket;
-
-
     private final int REGIST_ACTION = 3;
     private final int REGIST_SUCCESS = 31;
 	DBConnector connector;
-	//ArrayList<ObjectOutputStream> ooslist;
-	//ArrayList<ObjectInputStream> oislist;
 	public Server() {
 		connector = DBConnector.getConnector();
 		try {
